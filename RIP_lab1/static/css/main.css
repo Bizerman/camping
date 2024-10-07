@@ -7,10 +7,6 @@ body {
 .all-page-group {
   width: 100%;
   height: 844px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -19,28 +15,16 @@ body {
 .products {
   width: 100%;
   height: 390px;
-  /*background: url("../images/v29_48.png");*/
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
   display: grid;
   grid-template-columns: 297px 297px 297px;
   column-gap: 172px;
   position: absolute;
   top: 341px;
   left: 147px;
-  overflow: hidden;
 }
 .product {
   width: 297px;
   height: 359px;
-  /*background: url("../images/v24_2.png");*/
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  overflow: hidden;
 }
 .product-box {
   width: 297px;
@@ -48,30 +32,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 22px;
   background: rgba(217,217,217,1);
-  opacity: 1;
+
 }
 .product-image-1 {
   width: 268px;
   height: 242px;
-  /*background: url("../images/v28_30.png");*/
+  background: url("http://127.0.0.1:9000/img-for-rip/images/cosmonaut_figure.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  opacity: 1;
-  overflow: hidden;
 }
 .product-text{
   width: 289px;
   height: 49px;
-  /*background: url("../images/v121_2.png");*/
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
   position: absolute;
   top: 309px;
-  overflow: hidden;
+
 }
 .product-name {
   width: 289px;
@@ -82,7 +60,6 @@ body {
   font-family: Play,sans-serif;
   font-weight: normal;
   font-size: 20px;
-  opacity: 1;
   text-align: center;
 }
 .product-price {
@@ -94,28 +71,23 @@ body {
   font-family: Play,sans-serif;
   font-weight: normal;
   font-size: 20px;
-  opacity: 1;
   text-align: center;
 }
 .product-image-2 {
   width: 198px;
   height: 211px;
-  /*background: url("../images/v29_31.png");*/
+  background: url("http://127.0.0.1:9000/img-for-rip/images/patch_gateway.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  opacity: 1;
-  overflow: hidden;
 }
 .product-image-3 {
   width: 179px;
   height: 225px;
-  /*background: url("../images/v29_32.png");*/
+  background: url("http://127.0.0.1:9000/img-for-rip/images/tshirt_gateway.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  opacity: 1;
-  overflow: hidden;
 }
 .store-title {
   width: 129px;
@@ -126,18 +98,15 @@ body {
   font-family: Play,sans-serif;
   font-weight: bold;
   font-size: 40px;
-  opacity: 1;
   text-align: center;
 }
 .head {
   width: 100%;
   height: 104px;
   background: rgba(0,0,0,1);
-  opacity: 1;
   position: absolute;
   top: 0px;
   left: 0px;
-  overflow: hidden;
 }
 .name {
   color: #fff;
@@ -152,7 +121,6 @@ body {
   font-family: Play,sans-serif;
   font-weight: Bold;
   font-size: 32px;
-  opacity: 1;
   text-align: center;
 }
 .home-btn-line{
@@ -169,15 +137,9 @@ body {
 .search {
   width: 1366px;
   height: 56px;
-  /*background: url("../images/v32_71.png");*/
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
   position: absolute;
   top: 240px;
   left: 79px;
-  overflow: hidden;
 }
 .search-box {
   width: 100%;
@@ -188,12 +150,11 @@ body {
   top: 1px;
   left: 0px;
   border: 1px solid rgba(0,0,0,1);
-  overflow: hidden;
 }
 .search-image {
   width: 39px;
   height: 42px;
-  /*background: url("../images/v32_58.png");*/
+  background: url("http://127.0.0.1:9000/img-for-rip/images/search.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -201,7 +162,7 @@ body {
   position: absolute;
   top: 8px;
   left: 13px;
-  overflow: hidden;
+
 }
 .search-text {
   width: 144px;
@@ -230,21 +191,15 @@ body {
 .cart {
   width: 80px;
   height: 80px;
-  /*background: url("../images/v33_111.png");*/
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
   opacity: 0.9399999976158142;
   position: absolute;
   top:  731px;
   left: 1417px;
-  overflow: hidden;
 }
 .cart-box {
   width: 80px;
   height: 80px;
   background: rgba(255,255,255,1);
-  opacity: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,19 +207,14 @@ body {
   top: 0px;
   left: 0px;
   border: 2px solid rgba(0,0,0,1);
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  overflow: hidden;
+  border-radius: 20px;
 }
 .cart-image {
   width: 62px;
   height: 56px;
-  /*background: url("../images/v33_113.png");*/
+  background: url("http://127.0.0.1:9000/img-for-rip/images/cart.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   opacity: 0.8399999737739563;
-  overflow: hidden;
 }
