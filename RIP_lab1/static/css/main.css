@@ -210,8 +210,8 @@ body {
   border-radius: 20px;
 }
 .cart-image {
-  width: 62px;
-  height: 56px;
+  width: 49px;
+  height: 44px;
   background: url("http://127.0.0.1:9000/img-for-rip/images/cart.png");
   background-repeat: no-repeat;
   background-position: center center;
