@@ -13,8 +13,11 @@
 		<div class="product-info-box">
             <span class="product-name">{{ product.title }} </span>
             <span class="product-price">₽{{ product.price }}</span>
-            <span class="product-info">Параметры:{{ product.info }}
-            </span>
+            {% if product.info %}
+                <div class="product-info-line"></div>
+            	<span class="product-info-title">Параметры:</span>
+                <span class="product-info">{{ product.info}}</span>
+            {% endif %}
         </div>
         <div class="product-image-box">
             <div class="product-image" data-image="{{product.id}}"></div>

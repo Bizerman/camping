@@ -12,10 +12,11 @@
 <body>
 	<div class="all-page-group">
         <div class="head">
-			<div class="home-btn">
-			    <span class="home-btn-text">Gateway Mission</span>
+            <a href='{% url 'products_url'  %}'>
+                <span class="home-btn-text">Gateway Mission</span>
                 <div class="home-btn-line"></div>
-			</div>
+            </a>
+
 		</div>
         {% block content %}{% endblock %}
     </div>

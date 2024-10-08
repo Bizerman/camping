@@ -7,7 +7,7 @@
 {% block content %}
     <div class="products">
         {% for product in data.products %}
-            <a href='{% url 'products_url' product.id %}'>
+            <a href='{% url 'product_url' product.id %}'>
                 <div class="product">
                     <div class="product-box">
                         <div class="product-image" data-image="{{ product.id }}"></div>
