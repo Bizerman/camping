@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.cart {
+  width: 80px;
+  height: 80px;
+  opacity: 0.9399999976158142;
+  position: absolute;
+  top:  731px;
+  left: 1417px;
+}
+.cart-box {
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 2px solid rgba(0,0,0,1);
+  border-radius: 20px;
+}
+.cart-image {
+  width: 49px;
+  height: 44px;
+  background: url("http://127.0.0.1:9000/img-for-rip/images/cart.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.8399999737739563;
+}
+.product-info-box {
+  width: 714px;
+  height: 354px;
+  margin: 30px;
+  opacity: 1;
+  position: absolute;
+  top: 303px;
+  left: 762px;
+  
+}
+.product-name {
+  width: 714px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 16px;
+  left: 0px;
+  font-family: Play,sans-serif;
+  font-weight: Bold;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.product-price {
+  width: 714px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 51px;
+  left: 0px;
+  font-family: Play,sans-serif;
+  font-weight: Bold;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.product-info {
+  width: 522px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 148px;
+  left: 96px;
+  font-size: 32px;
+  opacity: 0.5799999833106995;
+  text-align: center;
+}
+
+.product-image-box {
+  width: 647px;
+  height: 593px;
+  background: rgba(217,217,217,1);
+  opacity: 1;
+  position: absolute;
+  top: 185px;
+  left: 57px;
+}
+.product-image[data-image='1']{
+  width: 521px;
+  height: 432px;
+  background: url("http://127.0.0.1:9000/img-for-rip/images/cosmonaut_figure.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 78px;
+  left: 67px;
+}
+.product-image[data-image='2'] {
+  width: 521px;
+  height: 432px;
+  background: url("http://127.0.0.1:9000/img-for-rip/images/patch_gateway.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 78px;
+  left: 67px;
+}
+.product-image[data-image='3']{
+  width: 521px;
+  height: 432px;
+  background: url("http://127.0.0.1:9000/img-for-rip/images/tshirt_gateway.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 78px;
+  left: 67px;
+}
