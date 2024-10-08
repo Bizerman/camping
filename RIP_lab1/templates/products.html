@@ -1,35 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Gateway mission store{% endblock %}
-
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/products.css' %}">
+{% endblock %}
 {% block content %}
     <div class="products">
-        <div onclick="location.href='{% url 'products_url' products.id %}" class="product">
-            <div class="product-box">
-                <div class="product-image-1"></div>
-            </div>
-            <div class="product-text">
-                <span class="product-name">Gateway cosmonaut figure</span>
-                <span class="product-price">₽3000</span>
-            </div>
-        </div>
-        <div class="product">
-            <div class="product-box">
-                <div class="product-image-2"></div>
-            </div>
-            <div class="product-text">
-                <span class="product-name">Gateway mission patch</span>
-                <span class="product-price">₽400</span>
-            </div>
-        </div>
-        <div class="product">
-            <div class="product-box">
-                <div class="product-image-3"></div>
-            </div>
-            <div class="product-text">
-                <span class="product-name">Gateway mission T-shirt</span>
-                <span class="product-price">₽1500</span>
-            </div>
-        </div>
+        {% for product in data.products %}
+            <a href='{% url 'products_url' product.id %}'>
+                <div class="product">
+                    <div class="product-box">
+                        <div class="product-image" data-image="{{ product.id }}"></div>
+                    </div>
+                    <div class="product-text">
+                        <span class="product-name">{{product.title}}</span>
+                        <span class="product-price">₽{{product.price}}</span>
+                    </div>
+                </div>
+            </a>
+        {% empty %}
+            <p>Нет доступных продуктов</p>
+        {% endfor %}
     </div>
     <span class="store-title">STORE</span>
     <div class="search">

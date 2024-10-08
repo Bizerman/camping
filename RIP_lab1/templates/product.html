@@ -1,30 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}{{ data.name }} - Gateway mission store{% endblock %}
+{% block title %}{{ product.title }} - Gateway mission store{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock %}
 {% block content %}
-<div class=e133_2>
-      <div class=e133_44>
-        <div class="e133_45"></div>
-        <div class="e133_46"></div>
-      </div>
-      <div class=e133_60><span  class="e133_61">Gateway cosmonaut figure </span><span  class="e133_62">₽3000</span>
-        <div class="e133_63"></div><span  class="e133_64">Параметры:
-
-    Масштаб 1: 6
-    • 13,5 дюйма в высоту с основанием
-    • 1400 грамм
-    </span>
-      </div>
-      <div class=e133_57>
-        <div class="e133_58"></div>
-        <div class="e133_59"></div>
-      </div>
-      <div class=e133_4>
-        <div class="e133_5"></div>
-        <div class="e133_6"></div>
-        <div class=e133_7><span  class="e133_8">Gateway
-     Mission</span>
-          <div class="e133_9"></div>
+    <div class="cart">
+        <div class="cart-box">
+            <div class="cart-image"></div>
         </div>
-      </div>
-</div>
+    </div>
+		<div class="product-info-box">
+            <span class="product-name">{{ product.title }} </span>
+            <span class="product-price">₽{{ product.price }}</span>
+            <span class="product-info">Параметры:{{ product.info }}
+            </span>
+        </div>
+        <div class="product-image-box">
+            <div class="product-image" data-image="{{product.id}}"></div>
+        </div>
 {% endblock %}
