@@ -4,36 +4,6 @@
 body {
   font-size: 14px;
 }
-.cart {
-  width: 80px;
-  height: 80px;
-  opacity: 0.9399999976158142;
-  position: absolute;
-  top:  731px;
-  left: 1417px;
-}
-.cart-box {
-  width: 80px;
-  height: 80px;
-  background: rgba(255,255,255,1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  border: 2px solid rgba(0,0,0,1);
-  border-radius: 20px;
-}
-.cart-image {
-  width: 49px;
-  height: 44px;
-  background: url("http://127.0.0.1:9000/img-for-rip/images/cart.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 0.8399999737739563;
-}
 .product-info-box {
   width: 714px;
   height: 354px;

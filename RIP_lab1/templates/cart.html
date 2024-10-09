@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Your shopping cart - Gateway mission store{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="cart-box">
+        <span class="cart-title">Корзина</span>
+        <div class="cart-info">
+            <div class="cart-frame">
+                <div class="cart-frame-title">
+                    <span class="product-column-title">Продукт</span>
+                    <span class="quantity-title">Кол-во</span>
+                    <span class="price-title">Цена</span>
+                </div>
+                <div class="cart-frame-info">
+                    <div class="card-frame-line-1"></div>
+                    <div class="products">
+                        {% for product in order.products %}
+                        <div class="product-box">
+                            <div class="product-info-box">
+                                <div class="product-image-box">
+                                    <div class="product-image" data-image="{{ product.id }}"></div>
+                                </div>
+                                <span class="product-title">{{ product.title }}</span>
+                                <span class="product-price">₽{{ product.price }}</span>
+                            </div>
+                            <div class="quantity-box">
+                                    <div class="quantity-frame"></div>
+                                    <span class="quantity">1</span>
+                                    <span class="quantity-minus">-</span>
+                                    <span class="quantity-plus">+</span>
+                                <span class="delete-product-btn">Удалить</span>
+                            </div>
+                            <span class="total-product-price">₽{{ product.price }}</span>
+                        </div>
+                    {% endfor %}
+                        <div class="card-frame-line-2"></div>
+{#                        <span class="total-price">Всего: ₽ 3400</span>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -24,12 +24,20 @@
     </div>
     <span class="store-title">STORE</span>
     <div class="search">
-    <div class="search-box"></div>
-    <div class="search-image"></div><span class="search-text">НАЙТИ...</span><span class="search-clean-btn">×</span>
+        <div class="search-image"></div>
+        <form action="{% url 'products_url' %}" method="get">
+            {% if not data.search %}
+                <input type="text" name="searchInput" placeholder= "НАЙТИ...">
+            {% else %}
+                <input type="text" name="searchInput" value="{{ data.search }}">
+            {% endif %}
+        </form>
     </div>
     <div class="cart">
-        <div class="cart-box">
-            <div class="cart-image"></div>
-        </div>
+        <a href='{% url 'cart_url' data.order.id %}'>
+            <div class="cart-box">
+                <div class="cart-image"></div>
+            </div>
+        </a>
     </div>
 {% endblock %}

@@ -116,6 +116,19 @@
   left: 13px;
 
 }
+input[type="text"]{
+  width: 1366px;
+  height: 55px;
+  color: rgba(0,0,0,1);
+  padding-left: 70px;
+  font-family: Play,sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+  opacity: 0.7099999785423279;
+  text-align: left;
+  background: rgba(255,255,255,1);
+  border: 1px solid rgba(0,0,0,1);
+}
 .search-text {
   width: 144px;
   color: rgba(0,0,0,1);
@@ -144,7 +157,7 @@
   width: 80px;
   height: 80px;
   opacity: 0.9399999976158142;
-  position: absolute;
+  position: fixed;
   top:  731px;
   left: 1417px;
 }
