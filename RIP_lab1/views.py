@@ -12,7 +12,7 @@ orders = []
 selected_products = []
 for product in products:
     selected_products.append(product)
-orders.append({'id': 1, 'products': selected_products})
+orders.append({'id': 1, 'products': selected_products,'quantity': len(selected_products)})
 
 def main_page_render(request):
     order = next((item for item in orders if item['id'] == 1), None)

@@ -158,7 +158,7 @@ input[type="text"]{
   height: 80px;
   opacity: 0.9399999976158142;
   position: fixed;
-  top:  731px;
+  top:  651px;
   left: 1417px;
 }
 .cart-box {
@@ -175,11 +175,22 @@ input[type="text"]{
   border-radius: 20px;
 }
 .cart-image {
-  width: 49px;
-  height: 44px;
+  width: 45px;
+  height: 41px;
   background: url("http://127.0.0.1:9000/img-for-rip/images/cart.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   opacity: 0.8399999737739563;
+}
+.cart-quantity
+{
+  width: 31px;
+  height: 17px;
+  color: rgba(0,0,0,1);
+  opacity: 0.84;
+  font-family: Play,sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
 }
