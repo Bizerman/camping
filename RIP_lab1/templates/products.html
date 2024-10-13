@@ -5,40 +5,49 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/products.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="products">
-        {% for product in data.products %}
-            <a href='{% url 'product_url' product.id %}'>
-                <div class="product">
-                    <div class="product-box">
-                        <div class="product-image" data-image="{{ product.id }}"></div>
-                    </div>
-                    <div class="product-text">
-                        <span class="product-name">{{product.title}}</span>
-                        <span class="product-price">₽{{product.price}}</span>
-                    </div>
+    <div class="gateway-products-page-content">
+        <div class="content-head">
+            <span class="gateway-products-title">Космические корабли и модули</span>
+            <div class="orders-search">
+                <div class="search">
+                    <form action="{% url 'products_url' %}" method="get">
+                        <div class="search-image"></div>
+                        {% if not data.search %}
+                            <input type="text" name="gateway_el" placeholder= "НАЙТИ...">
+                        {% else %}
+                            <input type="text" name="gateway_el" value="{{ data.search }}">
+                        {% endif %}
+                    </form>
                 </div>
-            </a>
+                <div class="orders">
+                    <a href='{% url 'orders_url' data.order.id %}' >
+                        <div class="orders-inside">
+                            <div class="orders-image"></div>
+                            <span class="orders-quantity">({{ data.order.quantity }})</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+        {% for product in data.products %}
+                <div class="product">
+                    <img src="{{ product.image }}" class="product-image">
+                    <span class="product-name">{{product.title}}</span>
+                    <span class="product-description">₽{{product.description}}</span>
+                    <a href='{% url 'product_url' product.id %}'>
+                        <div class="product-learn-more-btn">
+                            <span class="learn-more-btn-text">Подробнее</span>
+                            <div class="learn-more-btn-element">
+                                <div class="learn-more-btn-element-arrow"></div>
+                                <div class="learn-more-btn-element-arrow-2"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
         {% empty %}
             <p>Нет доступных продуктов</p>
         {% endfor %}
     </div>
-    <span class="store-title">STORE</span>
-    <div class="search">
-        <div class="search-image"></div>
-        <form action="{% url 'products_url' %}" method="get">
-            {% if not data.search %}
-                <input type="text" name="searchInput" placeholder= "НАЙТИ...">
-            {% else %}
-                <input type="text" name="searchInput" value="{{ data.search }}">
-            {% endif %}
-        </form>
-    </div>
-    <div class="cart">
-        <a href='{% url 'cart_url' data.order.id %}'>
-            <div class="cart-box">
-                <div class="cart-image"></div>
-                <span class="cart-quantity">({{ data.order.quantity }})</span>
-            </div>
-        </a>
     </div>
 {% endblock %}

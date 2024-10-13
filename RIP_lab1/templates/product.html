@@ -5,16 +5,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
 {% endblock %}
 {% block content %}
-		<div class="product-info-box">
-            <span class="product-name">{{ product.title }} </span>
-            <span class="product-price">₽{{ product.price }}</span>
-            {% if product.info %}
-                <div class="product-info-line"></div>
-            	<span class="product-info-title">Параметры:</span>
-                <span class="product-info">{{ product.info}}</span>
-            {% endif %}
+    <div class="product-page-content">
+        <img src="{{ product.image }}" class="product-image">
+        <div class="product">
+            <span class="product-page-title">{{ product.title }} </span>
+            <div class="product-info-line"></div>
+            <span class="product-info">{{ product.info}}</span>
         </div>
-        <div class="product-image-box">
-            <div class="product-image" data-image="{{product.id}}"></div>
-        </div>
+    </div>
 {% endblock %}

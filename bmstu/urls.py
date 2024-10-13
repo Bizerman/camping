@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.main_page_render, name='products_url'),
     path('products/<int:id>/', views.product_page_render, name='product_url'),
-    path('cart/<int:id>/', views.cart_page_render, name='cart_url')
+    path('order/<int:id>/', views.cart_page_render, name='orders_url')
 ]

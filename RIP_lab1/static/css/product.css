@@ -1,30 +1,29 @@
-* {
-  box-sizing: border-box;
+
+.product-page-content{
+  width: auto;
+  height: auto;
+  position: absolute;
+  top:185px;
+  left: 57px;
+  display: flex;
+  flex-direction: row;
+  gap: 66px;
 }
-body {
-  font-size: 14px;
-}
-.product-info-box {
-  width: 714px;
-  height: 354px;
-  opacity: 1;
+.product{
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  position: absolute;
-  left:762px;
-  top:303px;
+  gap: 13px;
   
 }
-.product-name {
-  width: 714px;
+.product-page-title {
+  width: auto;
   color: rgba(0,0,0,1);
-  margin-top: 30px;
   font-family: Play,sans-serif;
   font-weight: Bold;
   font-size: 32px;
-  opacity: 1;
   text-align: center;
 }
 .product-price {
@@ -38,77 +37,24 @@ body {
   text-align: center;
 }
 .product-info-line{
-  width:714px;
-  margin-top: 30px;
+  width:100%;
   border:1px solid rgba(0, 0, 0, 1);
   opacity:0.18000000715255737;
 }
-.product-info-title {
-  width: 522px;
-  color: rgba(0,0,0,1);
-  font-family: Play,sans-serif;
-  font-weight: Bold;
-  margin-top: 30px;
-  font-size: 32px;
-  opacity: 0.5799999833106995;
-  letter-spacing: 1px;
-  text-align: center;
-}
 .product-info {
-  width: 522px;
+  width: 723px;
   color: rgba(0,0,0,1);
   font-family: Play,sans-serif;
   font-weight: normal;
-  margin-top: 30px;
-  font-size: 32px;
-  opacity: 0.5799999833106995;
+  font-size: 24px;
   letter-spacing: -0.5px;
-  white-space: pre;
-  text-align: center;
+  text-indent: 50px;
+  white-space: pre-wrap;
+  text-align:justify;
 }
-.product-image-box {
+.product-image{
   width: 647px;
   height: 593px;
   background: rgba(217,217,217,1);
-  opacity: 1;
   border-radius: 22px;
-  position: absolute;
-  top: 185px;
-  left: 57px;
-}
-.product-image[data-image='1']{
-  width: 521px;
-  height: 432px;
-  background: url("http://127.0.0.1:9000/img-for-rip/images/cosmonaut_figure.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 78px;
-  left: 67px;
-}
-.product-image[data-image='2'] {
-  width: 521px;
-  height: 432px;
-  background: url("http://127.0.0.1:9000/img-for-rip/images/patch_gateway.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 78px;
-  left: 67px;
-}
-.product-image[data-image='3']{
-  width: 521px;
-  height: 432px;
-  background: url("http://127.0.0.1:9000/img-for-rip/images/tshirt_gateway.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 78px;
-  left: 67px;
 }
