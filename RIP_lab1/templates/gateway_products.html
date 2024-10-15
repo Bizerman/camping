@@ -11,7 +11,6 @@
             <div class="orders-search">
                 <div class="search">
                     <form action="{% url 'gateway_products_url' %}" method="get">
-                        <div class="search-image"></div>
                         {% if not data.search %}
                             <input type="text" name="gateway_el" placeholder= "НАЙТИ...">
                         {% else %}
@@ -19,22 +18,22 @@
                         {% endif %}
                     </form>
                 </div>
-                <a href='{% url 'gateway_mission_url' data.order.id %}' >
-                    <div class="orders">
-                        <div class="orders-inside">
-                            <div class="orders-image"></div>
-                            <span class="orders-quantity">({{ data.order.quantity }})</span>
+                <a href='{% url 'gateway_mission_url' data.mission.id %}' >
+                    <div class="missions">
+                        <div class="missions-inside">
+                            <img src="http://127.0.0.1:9000/img-for-rip/images/cart.png" class="missions-image">
+                            <span class="missions-quantity">({{ data.mission.quantity }})</span>
                         </div>
                     </div>
                 </a>
             </div>
-        </div>
+        </div>s
         <div class="products">
         {% for product in data.gateway_el %}
                 <div class="product">
                     <img src="{{ product.image }}" class="product-image">
                     <span class="product-name">{{product.title}}</span>
-                    <span class="product-description">₽{{product.description}}</span>
+                    <span class="product-description">{{product.description}}</span>
                     <a href='{% url 'gateway_product_url' product.id %}'>
                         <div class="product-learn-more-btn">
                             <span class="learn-more-btn-text">Подробнее</span>

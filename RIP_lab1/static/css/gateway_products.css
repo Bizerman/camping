@@ -33,6 +33,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  object-fit:cover;
 }
 .product-name {
   width: 100%;
@@ -126,9 +127,6 @@
   opacity: 0.7400000095367432;
   border: 1px solid rgba(0,0,0,1);
 }
-.search-image {
-  opacity: 0.5099999904632568;
-}
 input[type="text"]{
   width: 300px;
   height: 55px;
@@ -144,6 +142,7 @@ input[type="text"]{
   background-image: url("http://127.0.0.1:9000/img-for-rip/images/search.png");
   background-size: 40px 42px;
   background-position: 6px 6.5px;
+  background-repeat: no-repeat;
 }
 .search-clean-btn {
   width: 18px;
@@ -154,7 +153,7 @@ input[type="text"]{
   opacity: 0.44999998807907104;
   text-align: center;
 }
-.orders {
+.missions {
   width: 55px;
   height: 55px;
   opacity: 0.9399999976158142;
@@ -162,7 +161,7 @@ input[type="text"]{
   border: 2px solid rgba(0,0,0,1);
   border-radius: 10px;
 }
-.orders-inside{
+.missions-inside{
   width: 48px;
   height: 30px;
   display: flex;
@@ -171,16 +170,14 @@ input[type="text"]{
   margin-left: 3px;
 
 }
-.orders-image {
+.missions-image {
   width: 31px;
   height: 28px;
-  background: url("http://127.0.0.1:9000/img-for-rip/images/cart.png");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
   opacity: 0.8399999737739563;
 }
-.orders-quantity
+.missions-quantity
 {
   color: rgba(0,0,0,1);
   opacity: 0.84;

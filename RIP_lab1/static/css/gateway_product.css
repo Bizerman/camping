@@ -55,6 +55,7 @@
 .product-image{
   width: 647px;
   height: 593px;
+  object-fit:cover;
   background: rgba(217,217,217,1);
   border-radius: 22px;
 }
