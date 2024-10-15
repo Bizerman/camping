@@ -21,7 +21,7 @@ from RIP_lab1 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.main_page_render, name='products_url'),
-    path('products/<int:id>/', views.product_page_render, name='product_url'),
-    path('order/<int:id>/', views.cart_page_render, name='orders_url')
+    path('', views.gateway_products_page_render, name='gateway_products_url'),
+    path('gateway_product/<int:id>/', views.gateway_product_page_render, name='gateway_product_url'),
+    path('gateway_mission/<int:id>/', views.mission_page_render, name='gateway_mission_url')
 ]

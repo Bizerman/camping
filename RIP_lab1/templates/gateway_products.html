@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Gateway mission store{% endblock %}
+{% block title %}GM{% endblock %}
 {% block css %}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/products.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/gateway_products.css' %}">
 {% endblock %}
 {% block content %}
     <div class="gateway-products-page-content">
@@ -10,7 +10,7 @@
             <span class="gateway-products-title">Космические корабли и модули</span>
             <div class="orders-search">
                 <div class="search">
-                    <form action="{% url 'products_url' %}" method="get">
+                    <form action="{% url 'gateway_products_url' %}" method="get">
                         <div class="search-image"></div>
                         {% if not data.search %}
                             <input type="text" name="gateway_el" placeholder= "НАЙТИ...">
@@ -19,23 +19,23 @@
                         {% endif %}
                     </form>
                 </div>
-                <div class="orders">
-                    <a href='{% url 'orders_url' data.order.id %}' >
+                <a href='{% url 'gateway_mission_url' data.order.id %}' >
+                    <div class="orders">
                         <div class="orders-inside">
                             <div class="orders-image"></div>
                             <span class="orders-quantity">({{ data.order.quantity }})</span>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="products">
-        {% for product in data.products %}
+        {% for product in data.gateway_el %}
                 <div class="product">
                     <img src="{{ product.image }}" class="product-image">
                     <span class="product-name">{{product.title}}</span>
                     <span class="product-description">₽{{product.description}}</span>
-                    <a href='{% url 'product_url' product.id %}'>
+                    <a href='{% url 'gateway_product_url' product.id %}'>
                         <div class="product-learn-more-btn">
                             <span class="learn-more-btn-text">Подробнее</span>
                             <div class="learn-more-btn-element">
