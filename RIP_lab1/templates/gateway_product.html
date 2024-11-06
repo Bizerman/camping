@@ -6,11 +6,11 @@
 {% endblock %}
 {% block content %}
     <div class="product-page-content">
-        <img src="{{ product.image }}" class="product-image">
+        <img src="{{ product.img_url }}" class="product-image">
         <div class="product">
             <span class="product-page-title">{{ product.title }} </span>
             <div class="product-info-line"></div>
-            <span class="product-info">{{ product.info}}</span>
+            <span class="product-info">{{ product.full_description}}</span>
         </div>
     </div>
 {% endblock %}

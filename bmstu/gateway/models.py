@@ -1,0 +1,46 @@
+from django.db import models
+from django.http import HttpResponse
+# Create your models here.
+class Gateway_el(models.Model):
+    gateway_el_id = models.AutoField(primary_key=True,serialize=True)
+    title = models.CharField(max_length=64)
+    short_description = models.TextField()
+    status = models.BooleanField()
+    img_url = models.URLField()
+    full_description = models.TextField()
+    def add_to_mission(self,request):
+        Gateway_el_mission.add_object(self,request)
+    class Meta:
+        managed = False
+        db_table = 'gateway_el'
+class Gateway_mission(models.Model):
+    STATUS_CHOICES = (
+        (1,'Введен'),
+        (2, 'В работе'),
+        (3, 'Завершен'),
+        (4, 'Отклонен'),
+        (5, 'Удален'),
+    )
+    mission_id = models.AutoField(primary_key=True,serialize=True)
+    status = models.CharField(choices=STATUS_CHOICES,default=1,verbose_name="Cтатус")
+    create_datetime = models.DateTimeField()
+    creator = models.CharField(max_length=15)
+    form_datetime = models.DateTimeField()
+    complete_datetime = models.DateTimeField()
+    moderator = models.CharField(max_length=15)
+    class Meta:
+        verbose_name = "Миссия"
+        verbose_name_plural = "Миссии"
+        ordering = ('-create_datetime',)
+        db_table = 'gateway_missions'
+class Gateway_el_mission(models.Model):
+    id = models.AutoField(primary_key=True,serialize=True)
+    mission = models.ForeignKey(Gateway_mission,on_delete=models.DO_NOTHING,related_name='m_id')
+    element = models.ForeignKey(Gateway_el,on_delete=models.DO_NOTHING,related_name='el_id')
+    class Meta:
+        verbose_name = 'м-м'
+        verbose_name_plural = verbose_name
+        db_table = 'gateway_el_mission'
+        constraints = [
+            models.UniqueConstraint(fields=['mission','element'],name="mission_el_constraint")
+        ]

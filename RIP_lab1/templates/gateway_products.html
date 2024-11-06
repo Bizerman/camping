@@ -18,23 +18,33 @@
                         {% endif %}
                     </form>
                 </div>
-                <a href='{% url 'gateway_mission_url' data.mission.id %}' >
+            {% if data.mission != None %}
+                <a href='{% url 'gateway_mission_url' data.mission.mission_id %}' >
                     <div class="missions">
                         <div class="missions-inside">
-                            <img src="http://127.0.0.1:9000/img-for-rip/images/cart.png" class="missions-image">
+                            <img src="http://127.0.0.1:9000/img-for-rip/images/rocket.png" class="missions-image">
                             <span class="missions-quantity">({{ data.mission.quantity }})</span>
                         </div>
                     </div>
                 </a>
+            {% endif %}
             </div>
-        </div>s
+        </div>
         <div class="products">
-        {% for product in data.gateway_el %}
+        {% for element in data.gateway_el %}
                 <div class="product">
-                    <img src="{{ product.image }}" class="product-image">
-                    <span class="product-name">{{product.title}}</span>
-                    <span class="product-description">{{product.description}}</span>
-                    <a href='{% url 'gateway_product_url' product.id %}'>
+                    <div class="img-btn">
+                        <img src="{{ element.img_url }}" class="product-image">
+                        <a href='{% url 'el_add_to_mission' %}' class="add-mission-btn">
+                            <div class="ellipse-1"></div>
+                            <div class="ellipse-2"></div>
+                            <img src="http://127.0.0.1:9000/img-for-rip/images/Union.png" class="plus-img">
+                        </a>
+                        
+                    </div>
+                    <span class="product-name">{{element.title}}</span>
+                    <span class="product-description">{{element.short_description}}</span>
+                    <a href='{% url 'gateway_el_url' element.gateway_el_id %}'>
                         <div class="product-learn-more-btn">
                             <span class="learn-more-btn-text">Подробнее</span>
                             <div class="learn-more-btn-element">
@@ -47,6 +57,6 @@
         {% empty %}
             <p>Нет доступных продуктов</p>
         {% endfor %}
-    </div>
+        </div>
     </div>
 {% endblock %}
