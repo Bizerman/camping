@@ -9,6 +9,8 @@ class Gateway_el(models.Model):
     status = models.BooleanField()
     img_url = models.URLField()
     full_description = models.TextField()
+
+
     class Meta:
         verbose_name = "элемент"
         verbose_name_plural = "элементы"
@@ -23,9 +25,9 @@ class Gateway_mission(models.Model):
     )
     status = models.CharField(choices=STATUS_CHOICES,default=1,verbose_name="Cтатус")
     create_datetime = models.DateTimeField(default=timezone.now,verbose_name="Дата создания")
-    creator = models.ForeignKey(User,default='1',on_delete=models.CASCADE,verbose_name="Пользователь",related_name='creator')
-    form_datetime = models.DateTimeField()
-    complete_datetime = models.DateTimeField()
+    creator = models.ForeignKey(User,null=True,on_delete=models.CASCADE,verbose_name="Пользователь",related_name='creator')
+    form_datetime = models.DateTimeField(null=True)
+    complete_datetime = models.DateTimeField(null=True)
     moderator = models.ForeignKey(User,on_delete=models.DO_NOTHING,null=True,verbose_name="Модер", related_name='moder')
     def get_elements(self):
         return [
