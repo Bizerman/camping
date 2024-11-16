@@ -18,16 +18,23 @@
                         {% endif %}
                     </form>
                 </div>
-            {% if data.mission != None %}
-                <a href='{% url 'gateway_mission_url' data.mission.mission_id %}' >
-                    <div class="missions">
-                        <div class="missions-inside">
-                            <img src="http://127.0.0.1:9000/img-for-rip/images/rocket.png" class="missions-image">
-                            <span class="missions-quantity">({{ data.mission.quantity }})</span>
+                {% if data.mission %}
+                    <a href='{% url 'gateway_mission_url' data.mission.mission_id %}' >
+                        <div class="missions-active">
+                            <div class="missions-inside">
+                                <img src="http://127.0.0.1:9000/img-for-rip/images/rocket.png" class="missions-image">
+                                <span class="missions-quantity">({{ data.quantity }})</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            {% endif %}
+                    </a>
+                {% else  %}
+                    <div class="missions-passive">
+                            <div class="missions-inside">
+                                <img src="http://127.0.0.1:9000/img-for-rip/images/rocket.png" class="missions-image">
+                                <span class="missions-quantity">({{ data.quantity }})</span>
+                            </div>
+                        </div>
+                {% endif %}
             </div>
         </div>
         <div class="products">
@@ -35,7 +42,7 @@
                 <div class="product">
                     <div class="img-btn">
                         <img src="{{ element.img_url }}" class="product-image">
-                        <a href='{% url 'el_add_to_mission' %}' class="add-mission-btn">
+                        <a href='{% url 'el_add_to_mission' element.gateway_el_id %}' class="add-mission-btn">
                             <div class="ellipse-1"></div>
                             <div class="ellipse-2"></div>
                             <img src="http://127.0.0.1:9000/img-for-rip/images/Union.png" class="plus-img">

@@ -14,17 +14,22 @@
                 <div class="card-frame-line-1"></div>
             </div>
             <div class="mission-frame-info">
-                    {% for gateway_el in order.gateway_el %}
+                    {% for gateway_el in mission.get_elements %}
                         <div class="product">
                             <div class="product-box">
-                                <img src="{{ gateway_el.image }}" class="product-image">
+                                <img src="{{ gateway_el.img_url }}" class="product-image">
                                 <span class="product-title">{{ gateway_el.title }}</span>
                             </div>
-                            <span class="product-description">{{ gateway_el.description }}</span>
+                            <span class="product-description">{{ gateway_el.short_description }}</span>
                         </div>
                     {% endfor %}
             </div>
             <div class="card-frame-line-2"></div>
+        </div>
+        <div class="mission-btns">
+            <a href="{% url 'delete_mission' mission.mission_id%}" class="mission-del-btn">
+                <span class="mission-del-btn-text">Удалить миссию</span>
+            </a>
         </div>
     </div>
 {% endblock %}

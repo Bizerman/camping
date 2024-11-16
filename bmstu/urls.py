@@ -22,6 +22,8 @@ from RIP_lab1 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.gateway_products_page_render, name='gateway_products_url'),
-    path('gateway_product/<int:id>/', views.gateway_product_page_render, name='gateway_product_url'),
-    path('gateway_mission/<int:id>/', views.mission_page_render, name='gateway_mission_url')
+    path('gateway_element/<int:gateway_el_id>/', views.gateway_product_page_render, name='gateway_el_url'),
+    path('gateway_mission/<int:mission_id>/', views.mission_page_render, name='gateway_mission_url'),
+    path('gateway_mission/<int:mission_id>/delete/',views.del_mission,name="delete_mission"),
+    path('gateway_el/<int:el_id>/add_to_mission/', views.add_to_mission, name='el_add_to_mission')
 ]

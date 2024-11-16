@@ -28,6 +28,29 @@
   align-content: center;
   gap: 16px;
 }
+.mission-btns{
+  display: flex;
+  height: auto;
+  flex-direction: row;
+  padding-left: 1110px;
+  margin-bottom: 50px;
+}
+.mission-del-btn{
+  width: 200px;
+  height: 56px;
+  border:1px solid rgb(61, 61, 61);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.mission-del-btn-text{
+  color: rgba(0,0,0,1);
+  font-family: Play,sans-serif;
+  font-weight: normal;
+  font-size: 24px;
+  text-align: center;
+}
 .mission-frame-title {
   width: 1366px;
   height: 62px;
