@@ -7,7 +7,7 @@ class Gateway_el(models.Model):
     title = models.CharField(max_length=64)
     short_description = models.TextField()
     status = models.BooleanField()
-    img_url = models.URLField()
+    img_url = models.URLField(null=True,blank=True)
     full_description = models.TextField()
 
 
