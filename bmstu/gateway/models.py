@@ -1,20 +1,17 @@
-
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
 # Create your models here.
 class Gateway_el(models.Model):
-    gateway_el_id = models.AutoField(primary_key=True,serialize=True)
     title = models.CharField(max_length=64)
     short_description = models.TextField()
     status = models.BooleanField()
     img_url = models.URLField()
     full_description = models.TextField()
-    def add_to_mission(self,request):
-        gateway_element_and_mission.add_object(self,request)
     class Meta:
-        managed = False
+        verbose_name = "элемент"
+        verbose_name_plural = "элементы"
         db_table = 'gateway_el'
 class Gateway_mission(models.Model):
     STATUS_CHOICES = (
@@ -24,9 +21,8 @@ class Gateway_mission(models.Model):
         (4, 'Отклонен'),
         (5, 'Удален'),
     )
-    mission_id = models.AutoField(primary_key=True,serialize=True)
     status = models.CharField(choices=STATUS_CHOICES,default=1,verbose_name="Cтатус")
-    create_datetime = models.DateTimeField(default=timezone.now(),verbose_name="Дата создания")
+    create_datetime = models.DateTimeField(default=timezone.now,verbose_name="Дата создания")
     creator = models.ForeignKey(User,default='1',on_delete=models.CASCADE,verbose_name="Пользователь",related_name='creator')
     form_datetime = models.DateTimeField()
     complete_datetime = models.DateTimeField()
