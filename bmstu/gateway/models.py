@@ -4,12 +4,11 @@ from django.utils import timezone
 
 # Create your models here.
 class Gateway_el(models.Model):
-    title = models.CharField(max_length=64)
-    short_description = models.TextField()
-    status = models.BooleanField()
-    img_url = models.URLField(null=True,blank=True)
-    full_description = models.TextField()
-
+    title = models.CharField(null=True,blank=True,max_length=64)
+    short_description = models.TextField(null=True,blank=True)
+    status = models.BooleanField(null=True, blank=True,default=True)
+    img_url = models.URLField(null=True, blank=True)
+    full_description = models.TextField(null=True,blank=True)
 
     class Meta:
         verbose_name = "элемент"
@@ -25,7 +24,7 @@ class Gateway_mission(models.Model):
     )
     status = models.CharField(choices=STATUS_CHOICES,default=1,verbose_name="Cтатус")
     create_datetime = models.DateTimeField(default=timezone.now,verbose_name="Дата создания")
-    creator = models.ForeignKey(User,null=True,on_delete=models.CASCADE,verbose_name="Пользователь",related_name='creator')
+    creator = models.ForeignKey(User,null=True,default=2,on_delete=models.PROTECT,verbose_name="Пользователь",related_name='creator')
     form_datetime = models.DateTimeField(null=True)
     complete_datetime = models.DateTimeField(null=True)
     moderator = models.ForeignKey(User,on_delete=models.DO_NOTHING,null=True,verbose_name="Модер", related_name='moder')

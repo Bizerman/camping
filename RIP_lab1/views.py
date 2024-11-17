@@ -57,4 +57,4 @@ def del_mission(request,id):
 def get_draft_mission():
     return  Gateway_mission.objects.filter(status=1).first()
 def get_current_user():
-    return User.objects.filter(is_superuser=False).first()
+    return User.objects.filter().first()
