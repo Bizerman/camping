@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'bmstu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres', # Имя вашей БД. Если вы создали черезе psql или IDE свою базу и хотите использовать его - пропишите его имя здесь
+        'NAME': 'lab2 (rip)',
         'USER': 'postgres',
         'PASSWORD': '3657635',
         'HOST': 'localhost',
