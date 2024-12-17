@@ -19,13 +19,13 @@ def gateway_products_page_render(request):
         if search_gateway_el.lower() in product.title.lower()
         ]
     return render(request, 'gateway_products.html', {'data' : {'gateway_el' : filtered_gateway_el, 'mission' : gateway_mission, 'quantity':el_quantity,'search':search_gateway_el}})
-def gateway_product_page_render(request,gateway_el_id):
-    element = next((item for item in Gateway_el.objects.all() if item.gateway_el_id == gateway_el_id), None)
+def gateway_product_page_render(request,id):
+    element = next((item for item in Gateway_el.objects.all() if item.id == id), None)
     return render(request, 'gateway_product.html',{'product': element})
-def mission_page_render(request, mission_id):
-    if not Gateway_mission.objects.filter(pk=mission_id).exists():
+def mission_page_render(request, id):
+    if not Gateway_mission.objects.filter(pk=id).exists():
         return render(request,"404.html")
-    mission = Gateway_mission.objects.get(mission_id=mission_id)
+    mission = Gateway_mission.objects.get(id=id)
     if mission.status == 5:
         return render(request, "404.html")
 
@@ -48,13 +48,13 @@ def add_to_mission(request,el_id):
     )
     item.save()
     return redirect(redirect_url)
-def del_mission(request,mission_id):
-    if not Gateway_mission.objects.filter(pk=mission_id).exists():
+def del_mission(request,id):
+    if not Gateway_mission.objects.filter(pk=id).exists():
         return redirect("/")
     with connection.cursor() as cursor:
-        cursor.execute("UPDATE gateway_missions SET status=5 WHERE mission_id=%s",[mission_id])
+        cursor.execute("UPDATE gateway_missions SET status=5 WHERE id=%s",[id])
     return redirect("/")
 def get_draft_mission():
     return  Gateway_mission.objects.filter(status=1).first()
 def get_current_user():
-    return User.objects.filter(is_superuser=False).first()
+    return User.objects.filter().first()
