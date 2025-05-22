@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Your mission - GM{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/order.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="order-page-content">
+        <span class="order-title">Миссии</span>
+        <div class="order-info">
+            <div class="order-frame-title">
+                <span class="product-column-title">Объект</span>
+                <span class="product-column-description">Описание</span>
+                <div class="card-frame-line-1"></div>
+            </div>
+            <div class="order-frame-info">
+                    {% for car_camping in order.get_cars %}
+                        <div class="product">
+                            <div class="product-box">
+                                <img src="{{ car_camping.img_url }}" class="product-image">
+                                <span class="product-title">{{ car_camping.title }}</span>
+                            </div>
+                            <span class="product-description">{{ car_camping.short_description }}</span>
+                        </div>
+                    {% endfor %}
+            </div>
+            <div class="card-frame-line-2"></div>
+        </div>
+        <div class="order-btns">
+            <a href="{% url 'delete_order' order.id%}" class="order-del-btn">
+                <span class="order-del-btn-text">Удалить миссию</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}

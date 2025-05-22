@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none!important;
+}
+@font-face {
+  font-family: "Post No Bills Jaffna";
+  src:
+    url("fonts/PostNoBillsJaffna-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+.all-page-group {
+  width: auto;
+  height: auto;
+  padding-top: 124px;
+  overflow: visible;
+}
+.head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #000; /* Черный фон */
+}
+
+.head::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../media/header/header_back.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+  background-size: cover;
+  z-index: 1; /* Картинка поверх фона */
+}
+.name {
+  color: #fff;
+}
+.home-btn{
+  width: auto;
+  height: auto;
+  gap: 10px;
+  margin-left: 122px;
+}
+.header-logo{
+  width: 54px;
+  height: 54px;
+}
+.header-text{
+  width: 242px;
+  height: auto;
+}
+.home-btn-text-1 {
+  width: 165px;
+  height: 51px;
+  color: rgb(46, 183, 107);
+  font-family: "Potta One",sans-serif;
+  font-weight: normal;
+  font-size: 36px;
+  text-align: center;
+}
+.home-btn-text-2 {
+  width: auto;
+  height: auto;
+  font-family: "Post No Bills Jaffna", sans-serif;
+  color: rgba(255,255,255,1);
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+}
+.car-camping-btn{
+  display: inline-block;
+  width: 212px;
+  margin-top: 16px;
+  margin-left: 581px;
+  font-family: "Rubik Dirt",sans-serif;
+  font-size: 28px;
+  color: #33d57b;
+  text-align: center;
+}
+.tent-btn{
+  display: inline-block;
+  width: 181px;
+  margin-top: 16px;
+  margin-left: 25px;
+  font-family: "Rubik Dirt",sans-serif;
+  font-size: 28px;
+  color: #33d57b;
+  text-align: center;
+}
+.profile-and-draft{
+  width: 215px;
+  height: 50px;
+  margin-left: 150px;
+  margin-top: 15px;
+}
+.profile{
+  width: 130px;
+  height: 75px;
+}
+.profile-img{
+  width: 40px;
+  height: 45px;
+}
+.profile-nickname{
+  font-family: Rubik,sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #36f98e;
+  text-align: center;
+}
+.draft{
+  width: 74px;
+  height: 52px;
+  opacity: 94%;
+  border: 1px solid white; /* Толщина + стиль + цвет */
+  border-radius: 10px;
+}
+.draft-img{
+  width: 44px;
+  height: 38px;
+  opacity: 94%;
+}
+.draft-counter{
+  margin-top: 25px;
+  font-family: "Rubik",sans-serif;
+  font-size: 13px;
+  font-weight: bolder;
+  text-align: center;
+  color: white;
+}

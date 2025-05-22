@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block title %}GM{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/car_campings.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="car_campings-page-content">
+        <div class="content-head">
+            <span class="car_campings-title">Каталог автодомов</span>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+                <p class="car_campings-description">Автодом — это идеальный спутник для тех, кто мечтает совместить свободу путешествий с комфортом домашнего уюта,превращая любой уголок природы в персональный кемпинг с атмосферой заботы о каждом моменте.</p>
+                <p class="car_campings-description">Представьте: вы просыпаетесь под пение птиц у горного озера, завариваете кофе на собственной мини-кухне, а вечером, после дня, наполненного приключениями, устраиваете киносеанс под звездным небом, не покидая мягкого дивана своего мобильного дома. Это не просто транспорт — это ваш личный оазис на колесах, где есть всё необходимое: от уютной спальни с теплым одеялом до душа с горячей водой, от компактного холодильника до продуманных систем хранения вещей.</p>
+                <div class="orders-search">
+                    <div class="search-sort d-flex flex-column">
+                        <div class="search">
+                            <form action="{% url 'car_campings_url' %}" method="get">
+                                {% if not data.search %}
+                                    <input type="text" name="car_camping" placeholder= "НАЙТИ...">
+                                {% else %}
+                                    <input type="text" name="car_camping" value="{{ data.search }}">
+                                {% endif %}
+                            </form>
+                        </div>
+                        <a href="" class="sort d-flex flex-row justify-content-start align-items-center">
+                            <span class="sort-text">Сортировка по цене</span>
+                            <img src="../../media/car_campings_page/sort_degrease.png" class="sort-img">
+                        </a>
+                    </div>
+                    <div class="products">
+                        {% for car in data.car_camping %}
+                            <div class="product">
+                                <div class="d-flex flex-column gap-2">
+                                    <a href="{% url "car_camping_url" car.id %}" class="img-title">
+                                        {% with car.images.all|first as main_image %}
+                                            <img src="{{ main_image.image.url|default:'/static/default-car-image.jpg' }}" class="product-image">
+                                        {% endwith %}
+                                        <span class="product-name">{{car.title}}</span>
+                                    </a>
+                                    <div class="product-properties d-grid">
+                                        <div class="product-property d-flex flex-row gap-3 justify-content-center align-items-center">
+                                            <img src="../../media/car_campings_page/cards/sleeping_seats.png" class="property-img">
+                                            <span class="product-property-text">{{ car.seats }}</span>
+                                        </div>
+                                        <div class="product-property d-flex flex-row gap-1 justify-content-center align-items-center">
+                                            <img src="../../media/car_campings_page/cards/engine1.png" class="property-img">
+                                            <span class="product-property-text">
+                                                {% with car.engine|split:"/" as parts %}
+                                                    {{ parts.0|default:"Двигатель" }}
+                                                {% endwith %}
+                                            </span>
+                                        </div>
+                                        <div class="product-property d-flex flex-column justify-content-center align-items-center">
+                                            <span class="product-property-text-2">Коробка передач</span>
+                                             <span class="product-property-text-3">{{ car.transmission|truncate_transmission }}</span>
+                                        </div>
+                                        <div class="product-property d-flex flex-row gap-3 justify-content-center align-items-center">
+                                            <img src="../../media/car_campings_page/cards/seats.png" class="property-img">
+                                            <span class="product-property-text">{{ car.seats }}</span>
+                                        </div>
+                                        <div class="product-property d-flex flex-row gap-3 justify-content-start align-items-center">
+                                            <img src="../../media/car_campings_page/cards/engine2.png" class="property-img">
+                                            <span class="product-property-text">
+                                                {% with car.engine|split:"/" as parts %}
+                                                    {{ parts.1|default:"Характеристики" }}
+                                                {% endwith %}
+                                            </span>
+                                        </div>
+                                        <div class="product-property d-flex flex-column justify-content-center align-items-center">
+                                            <span class="product-property-text-2">Категория прав</span>
+                                            <span class="product-property-text-3">{{ car.category }}</span>
+                                        </div>
+                                    </div>
+                                    <span class="product-dimensions">Габариты: {{car.length}}/{{ car.width }}/{{ car.height }}</span>
+                                    <span class="product-price">{{ car.price|format_price }}</span>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p>Нет доступных продуктов</p>
+                        {% endfor %}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
