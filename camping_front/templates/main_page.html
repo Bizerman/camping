@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main_page.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="main-page-content d-flex flex-column justify-content-center align-items-center">
+        <div class="main-text-1 d-flex flex-column align-items-center justify-content-center">
+            <span class="main-text-1-header">Кемпинг: ваш путь к свободе и гармонии с природой</span>
+            <img src="../../../media/main_page/background1.png" class="back-img">
+            <p class=main-text-1-description>В современном мире, где ритм жизни ускоряется с каждым днем, все больше людей стремятся к единению с природой. Кемпинг перестал быть просто способом провести выходные — это философия, позволяющая перезагрузиться, оторваться от городской суеты и открыть для себя новые горизонты. Наш сайт создан для тех, кто хочет превратить мечты о приключениях в реальность. Здесь вы найдете всё необходимое: от выбора идеального снаряжения до секретных локаций для уединенного отдыха.</p>
+        </div>
+        <div class="main-text-2 d-flex flex-column justify-content-center align-items-center">
+            <span class="main-text-2-header">Почему кемпинг?</span>
+            <div class="main-text-2-description-box d-flex flex-row gap-3 justify-content-center align-items-center">
+                <img src="../../media/main_page/why_camping.png" class="main-text-2-img">
+                <p class="main-text-2-description"> Ответ - свобода. Свобода просыпаться под пение птиц, засыпать под шепот звезд и менять маршруты по велению сердца. Это возможность показать детям, как разводить костер, научиться читать следы зверей на тропинках или просто молча созерцать закат у горного озера. После пандемии интерес к такому отдыху вырос в разы: люди ценят безопасность, простор и возможность контролировать свое окружение. Наш сайт помогает сделать этот опыт комфортным даже для тех, кто никогда не ночевал в палатке.</p>
+            </div>
+        </div>
+        <div class="main-text-3 d-flex flex-column justify-content-start align-items-center">
+            <div class="background-image"></div>
+            <div class="gradient-overlay"></div>
+            <span class="main-text-3-header">Наши каталоги</span>
+            <div class="main-text-3-btns d-flex flex-row justify-content-start align-items-center">
+                <a href="{% url "car_campings_url" %}" >
+                    <div class="main-text-3-box d-flex flex-column justify-content-start align-items-center">
+                        <img src="../../../media/main_page/car_camping.png" class="main-text-3-img">
+                        <p class="main-text-3-text z-100">Автодома</p>
+                    </div>
+                </a>
+                <a href="{% url "tents_url" %}" >
+                    <div class="main-text-3-box d-flex flex-column justify-content-start align-items-center">
+                        <img src="../../../media/main_page/tent.png" class="main-text-3-img">
+                        <p class="main-text-3-text">Палатки</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

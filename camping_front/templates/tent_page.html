@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block title %}{{ product.title }} - GM{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tent_page.css' %}">
+{% endblock %}
+{% block js %}
+    {% load static %}
+    <script src="{% static 'js/car_camping_gallery.js' %}" defer></script>
+    <script src="{% static 'js/category_swap_tents.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+    <a href="{% url 'tents_url' %}">
+        <div class="back-btn d-flex flex-row justify-content-center gap-4 align-items-center">
+            <img src="../../media/pages_components/arrow.png" class="back-arrow">
+            <span class="back-text">К каталогу</span>
+        </div>
+    </a>
+    <div class="product-info">
+        <div class="product-imgs">
+            <div class="d-flex flex-row align-items-center justify-content-center gap-2">
+                <img src="../../media/pages_components/previous_img.png" class="btn-img" id="prevBtn">
+                {% with product.images.first as main_image %}
+                <img src="{{ main_image.image.url }}"
+                     alt="{{ product.name }}"
+                     class="main-img"
+                     id="mainImage">
+                {% endwith %}
+                <img src="../../media/pages_components/next_img.png"
+                     class="btn-img"
+                     id="nextBtn">
+            </div>
+            <div class="other-images" id="thumbnailContainer">
+                {% for image in product.images.all %}
+                    <img src="{{ image.image.url }}"
+                         alt="{{ product.name }}"
+                         class="other-img {% if forloop.first %}active{% endif %}"
+                         data-index="{{ forloop.counter0 }}">
+                {% endfor %}
+            </div>
+        </div>
+        <div class="product-buy-card">
+            <div class="product-buy-info">
+                <span class="product-title">{{ product.name }}</span>
+                <div class="product-properties">
+                    <div class=" d-flex flex-column gap-4">
+                        <div class="product-property">
+                            <span class="product-property-name">Комнат</span>
+                            <span class="product-property-value">{{ product.rooms }}</span>
+                        </div>
+                        <div class="product-property">
+                            <span class="product-property-name">Количество мест</span>
+                            <span class="product-property-value">{{ product.capacity }}</span>
+                        </div>
+                    </div>
+                    <span class="product-price">{{ product.price|format_price_2 }} ₽</span>
+                </div>
+            </div>
+            {% if auth %}
+                   <a href="{% url 'add_to_order' 'tent' product.id %}" class="buy-btn-box d-flex justify-content-center align-items-center">
+                {% else %}
+                    <a href="{% url 'login_url' %}" class="buy-btn-box d-flex justify-content-center align-items-center">
+                {% endif %}
+                    <span class="buy-btn-text">Купить</span>
+                    </a>
+        </div>
+    </div>
+    <div class="product-more-information">
+        <div class="product-more-information-categories">
+                <div class="d-flex flex-row align-items-center gap-4">
+                    <span id="desc" class="product-more-information-categories-titles active">Описание</span>
+                    <span id="spec" class="product-more-information-categories-titles">Характеристики</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column category-content">
+        <span class="category-title"></span>
+        <span class="category-info"></span>
+        <div id="product-data"
+             data-description="{{ product.description|safe  }}"
+             data-purpose="{{ product.purpose|escapejs }}"
+             data-capacity="{{ product.capacity }}"
+             data-frame-type="{{ product.frame_type|escapejs }}"
+             data-geometry="{{ product.geometry|escapejs }}"
+             data-inner-product="{{ product.inner_product|yesno:'true,false' }}"
+             data-quick-assembly="{{ product.quick_assembly|yesno:'true,false' }}"
+             data-entries="{{ product.entries }}"
+             data-vestibules="{{ product.vestibules }}"
+             data-rooms="{{ product.rooms }}"
+             data-snowskirt="{{ product.snowskirt|yesno:'true,false' }}"
+             data-windows="{{ product.windows|yesno:'true,false' }}"
+             data-storm-guys="{{ product.storm_guys|yesno:'true,false' }}"
+             data-inner-pockets="{{ product.inner_pockets|yesno:'true,false' }}"
+             data-mosquito-net="{{ product.mosquito_net|yesno:'true,false' }}"
+             data-fireproof="{{ product.fireproof|yesno:'true,false' }}"
+             data-seam-sealing="{{ product.seam_sealing|escapejs }}"
+             data-tent-material="{{ product.tent_material|escapejs }}"
+             data-floor-material="{{ product.floor_material|escapejs }}"
+             data-pole-material="{{ product.pole_material|escapejs }}"
+             data-product-waterproof="{{ product.product_waterproof }}"
+             data-floor-waterproof="{{ product.floor_waterproof }}"
+             data-external-dimensions="{{ product.external_dimensions }}"
+             data-internal-dimensions="{{ product.internal_dimensions }}"
+             data-packed-dimensions="{{ product.packed_dimensions }}"
+             data-weight="{{ product.weight }}">
+        </div>
+        <div class="background-image"></div>
+        <div class="gradient-overlay"></div>
+    </div>
+{% endblock %}

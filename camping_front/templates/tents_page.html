@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block title %}Tents{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tents_page.css' %}">
+{% endblock %}
+{% block js %}
+    {% load static %}
+    <script src="{% static 'js/sort.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+    <div class="tents-page-content">
+        <div class="content-head">
+            <span class="tents-title">Каталог палаток</span>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+                <p class="tents-description">Палатка — это ваш надежный спутник в мире, где приключения начинаются с первого шага за порог цивилизации, где каждый шорох листвы и шепот ветра становятся частью вашего путешествия, а звезды — единственным светом под куполом ночи. </p>
+                <p class="tents-description">Это не просто кусок брезента на колышках — это ваш личный уголок дикой природы, легкий как перо в рюкзаке, но прочный как скала, способный выдержать порывы ветра, ливни и даже первый снег, если приключение заведет вас так далеко.</p>
+                <div class="orders-search">
+                    <div class="search-sort d-flex flex-column">
+                        <div class="search z-0">
+                            <form action="{% url 'tents_url' %}" method="get">
+                                {% if not data.search %}
+                                    <input type="text" name="tents" placeholder= "НАЙТИ...">
+                                {% else %}
+                                    <input type="text" name="tents" value="{{ data.search }}">
+                                {% endif %}
+                            </form>
+                        </div>
+                        <form action="{% url 'tents_url' %}" method="get" class="sort-form">
+                            <input type="hidden" name="sort" value="{{ request.GET.sort }}">
+                            <input type="hidden" name="tent" value="{{ request.GET.tent }}">
+
+                            <button type="submit" class="sort d-flex flex-row justify-content-start align-items-center border-0 bg-transparent">
+                                <span class="sort-text {% if request.GET.sort %}active-sort{% endif %}">Сортировка по цене</span>
+                                <img src="../../media/pages_components/sort_degrease.png"
+                                     class="sort-img {% if request.GET.sort == 'asc' %}reflected{% endif %}"
+                                     alt="Сортировка">
+                            </button>
+                        </form>
+                    </div>
+                    <div class="products">
+                        {% for tent in data.tents %}
+                            <div class="product">
+                                <div class="d-flex flex-column gap-2">
+                                    <a href="{% url "tent_url" tent.id %}" class="img-title">
+                                        {% with tent.images.all|first as main_image %}
+                                            <img src="{{ main_image.image.url|default:'/static/default-tents-image.jpg' }}" class="product-image">
+                                        {% endwith %}
+                                        <span class="product-name">{{tent.name}}</span>
+                                    </a>
+                                    <div class="product-properties d-grid">
+                                        <div class="product-property d-flex flex-row gap-1 justify-content-between align-items-center">
+                                            <img src="../../media/tents_page/seats.png" class="property-img">
+                                            <span class="product-property-text">{{ tent.capacity }}</span>
+                                        </div>
+                                        <div class="product-property d-flex flex-row gap-1 justify-content-between align-items-center">
+                                            <img src="../../media/tents_page/waterproof.png" class="waterproof-img">
+                                            <span class="product-property-text">{{ tent.tent_waterproof}}</span>
+                                        </div>
+                                        <div class="product-property d-flex flex-row justify-content-between align-items-center">
+                                            <img src="../../media/tents_page/weight.png" class="weight-img">
+                                             <span class="product-property-text">{{ tent.weight|format_weight }}</span>
+                                        </div>
+
+                                    </div>
+                                    <span class="product-dimensions">Внешний размер: {{tent.external_length}}/{{ tent.external_width }}/{{ tent.external_height }}</span>
+                                    <span class="product-price">{{ tent.price|format_price }}</span>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <p>Нет доступных продуктов</p>
+                        {% endfor %}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

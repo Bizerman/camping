@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Регистрация - GM{% endblock %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sign_up_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="registration-page-content">
+    <!-- Навигация (добавьте свою) -->
+    
+    <div class="registration-form-container">
+        <h2 class="registration-title">Регистрация</h2>
+        
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{% url 'sign_up_page_url' %}">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="username">Имя пользователя</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Введите имя пользователя"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="first_name">Имя</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="first_name" 
+                    name="first_name" 
+                    placeholder="Введите имя"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Фамилия</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="last_name" 
+                    name="last_name" 
+                    placeholder="Введите фамилию"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Введите email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Введите пароль"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Зарегистрироваться
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

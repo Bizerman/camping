@@ -1,0 +1,260 @@
+
+.tents-page-content{
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 35px
+}
+.content-head{
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  width: 100%;
+}
+.tents-description{
+  width: 1500px;
+  height: auto;
+  white-space: pre-line;
+  text-indent: 7%;
+  display: inline-block;
+  line-height: 1.5;
+  font-family: "Rubik",sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+  text-align: start;
+}
+.products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 310px 310px 310px;
+  row-gap: 43px;
+  column-gap: 86px;
+  padding-left: 87.5px;
+}
+.product {
+  width: 310px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 13px;
+  align-items: center;
+  justify-content: start;
+  gap: 18px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+}
+.product-properties{
+  grid-template-columns: 69px 100px 69px;
+  grid-column-gap: 8px;
+  grid-template-rows: 33px;
+  grid-row-gap: 12px;
+
+}
+.product-property{
+  border: 2px solid rgb(46, 183, 107);
+}
+.product-property-text{
+  font-family: Rubik,sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+  margin-right: 10%;
+  opacity: 65%;
+  color: black;
+}
+.product-property-text-2{
+  font-family: Rubik,sans-serif;
+  font-weight: bolder;
+  font-size: 5px;
+  color: #2eb76b;
+}
+.product-property-text-3{
+  font-family: Rubik,sans-serif;
+  font-weight: bolder;
+  font-size: 13px;
+  color: #2eb76b;
+}
+.property-img{
+  margin-left: 10%;
+  width: 28px;
+  height: 28px;
+}
+.waterproof-img{
+  margin-left: 10%;
+  width: 23px;
+  height: 23px;
+}
+.weight-img{
+  margin-left: 10%;
+  width: 23px;
+  height: 23px;
+}
+.product-dimensions{
+  font-family: Rubik,sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  opacity: 65%;
+  color: #000000;
+}
+.product-price{
+  font-family: Rubik,sans-serif;
+  margin-top: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000000;
+  text-align: start;
+}
+.img-title{
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 14px;
+}
+
+.add-order-btn{
+  display: flex;
+  position: absolute;
+  margin-left: 241px;
+  margin-top: 186px;
+  justify-content: center;
+  align-items: center;
+}
+.product-image{
+  width: 100%;
+  height: 172px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+}
+.product-name {
+  width: auto;
+  color: rgb(47, 168, 98);
+  font-family: Rubik,sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: left;
+  transition: color 0.3s;
+}
+.product-name:hover{
+  color: #268853;
+}
+.product-description {
+  width: 100%;
+  color: rgba(0,0,0,1);
+  font-family: Play,sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: left;
+}
+
+.tents-title {
+  width: auto;
+  color: #2fa862;
+  font-family: "Rubik Dirt",sans-serif;
+  font-weight: normal;
+  font-size: 48px;
+  text-align: center;
+}
+.orders-search{
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  height: auto;
+  padding-left: 103px;
+  padding-right: 103px;
+  padding-top: 40px;
+  padding-bottom: 120px;
+
+}
+.search-sort{
+  gap:13px
+}
+.search {
+  width: 300px;
+  height: 55px;
+}
+.sort{
+  gap: 68px
+}
+.sort-text{
+  width: 210px;
+  font-family: "Rubik",sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+}
+.active-sort {
+      color: #12b672;
+  }
+.sort-img{
+  width: 26px;
+  height: 26px;
+  transition: transform 0.3s ease;
+}
+.sort-img.reflected {
+        transform: scaleY(-1);
+    }
+input[type="text"]{
+  width: 300px;
+  height: 55px;
+  padding-left: 60px;
+  color: rgba(0,0,0,1);
+  font-family: Play,sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+  opacity: 0.7099999785423279;
+  text-align: left;
+  background: rgba(255,255,255,1);
+  border: 1px solid rgba(0,0,0,1);
+  background-image: url("../../../media/pages_components/search.png");
+  background-size: 40px 42px;
+  background-position: 6px 6.5px;
+  background-repeat: no-repeat;
+}
+
+.orders-passive {
+  width: 55px;
+  height: 55px;
+  opacity: 0.9399999976158142;
+  background: rgba(255,255,255,1);
+  border: 2px solid rgba(0,0,0,1);
+  border-radius: 10px;
+}
+.orders-active{
+  width: 55px;
+  height: 55px;
+  opacity: 0.9399999976158142;
+  background: rgba(255,255,255,1);
+  border: 2px solid rgb(246, 65, 55);
+  border-radius: 10px;
+}
+.orders-inside{
+  width: 48px;
+  height: 30px;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 13px;
+  margin-left: 3px;
+
+}
+.orders-image {
+  width: 31px;
+  height: 28px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.8399999737739563;
+}
+.orders-quantity
+{
+  color: rgba(0,0,0,1);
+  opacity: 0.84;
+  font-family: Play,sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: left;
+}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block title %}Car Campings{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_page.css' %}">
+{% endblock %}
+{% block content %}
+<div class="login-page-content">
+    <!-- Навигация (добавьте свою навигацию) -->
+
+    <div class="login-form-container">
+        <h2 class="login-title">Рады снова Вас видеть!</h2>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{% url 'login_url' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Введите свой email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Введите пароль"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="submit-btn mb-5">
+                Войти
+            </button>
+            <div class="d-flex flex-row justify-content-start">
+                <span class="me-1">Нет аккаунта?</span>
+                <a href="{% url 'sign_up_page_url' %}" class="sign-up-text">Создать аккаунт</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

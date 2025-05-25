@@ -1,24 +1,39 @@
-
 .order-page-content {
-  width: 100%;
-  height: auto;
+  width: 100vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  align-content: center;
-  gap:60px;
-  position: absolute;
-  top: 148px;
+  margin-top: 80px;
   overflow: hidden;
 }
+.order-content{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  gap:60px;
+  margin-bottom: 5%;
+  padding: 0 10% 0 10%;
+}
+.breadcrumbs{
+  position: absolute;
+  top: 100px;
+}
 .order-title {
-  width: 100%;
-  height: 48px;
-  color: rgba(0,0,0,1);
-  font-family: Play,sans-serif;
-  font-weight: Bold;
-  font-size: 40px;
+  width: auto;
+  height: 76px;
+
+  font-family: 'Rubik Dirt',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 76px;
   text-align: center;
+  letter-spacing: 0.01em;
+  color: #2EB76B;
+
+
+
 }
 .order-info {
   width: auto;
@@ -26,46 +41,92 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  gap: 16px;
 }
-.order-btns{
+.order-btns {
   display: flex;
-  height: auto;
   flex-direction: row;
-  padding-left: 1110px;
+  width: 1356px;
+  height: auto;
+  gap: 50px;
   margin-bottom: 50px;
+  justify-content: flex-end;
 }
 .order-del-btn{
-  width: 200px;
+  all:unset;
+  width: 265px;
   height: 56px;
-  border:1px solid rgb(61, 61, 61);
+  padding-inline: 15px;
+  border:2px solid rgb(61, 61, 61);
   display: flex;
   align-items: center;
   justify-content: center;
 
 }
+.order-del-btn :hover{
+  color: rgb(246, 65, 55);
+}
+.order-form-btn{
+  all:unset;
+  width: 320px;
+  height: 56px;
+  padding-inline: 15px;
+  border:2px solid rgb(61, 61, 61);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order-form-btn :hover{
+  color: rgb(246, 65, 55);
+}
+
 .order-del-btn-text{
   color: rgba(0,0,0,1);
   font-family: Play,sans-serif;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 20px;
   text-align: center;
 }
-.order-frame-title {
-  width: 1366px;
-  height: 62px;
+.order-form-btn-text{
+  color: rgba(0,0,0,1);
+  font-family: Play,sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
 }
-.product-column-title {
+
+.car-column-title{
+  width: auto;
+  height: auto;
+  font-family: 'Rubik',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 47px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #000000;
+}
+.draft-element-column-title {
   width: 176px;
   padding-left: 228px;
-  margin-right: 605px;
+  margin-right: 28%;
   color: rgba(0,0,0,1);
   font-family: Play,sans-serif;
   font-weight: normal;
   font-size: 32px;
   text-align: center;
 }
-.product-column-description {
+.draft-element-column-description {
+  width: 222px;
+  color: rgba(0,0,0,1);
+  font-family: Play,sans-serif;
+  font-weight: normal;
+  font-size: 32px;
+  margin-right: 160px;
+  opacity: 1;
+  text-align: center;
+}
+.draft-element-column-addition {
   width: 222px;
   color: rgba(0,0,0,1);
   font-family: Play,sans-serif;
@@ -74,31 +135,53 @@
   opacity: 1;
   text-align: center;
 }
-.price-title {
-  width: 77px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  left: 1214px;
-  font-family: Play,sans-serif;
+
+.draft-element-input[type="text"] {
+  all: unset; /* Сбросить все стили */
+  width: 100%; /* Ширина 100% */
+  padding: 8px; /* Отступы */
+  font-size: 16px; /* Размер шрифта */
+  border: 1px solid #ccc; /* Граница */
+  border-radius: 4px; /* Скругление углов */
+  background-color: #fff; /* Белый фон */
+  transition: border-color 0.3s ease; /* Плавное изменение цвета границы */
+}
+
+/* Стиль при фокусе */
+.draft-element-input[type="text"]:focus {
+  border-color: rgb(246, 65, 55);
+  outline: none;
+  box-shadow: 0 0 5px rgb(180, 47, 39);
+}
+.edit-addition-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.draft-element-addition{
+  word-break: break-word;
+  font-family: Play, sans-serif;
   font-weight: normal;
-  font-size: 32px;
-  opacity: 1;
+  font-size: 20px;
   text-align: center;
 }
+
 .order-frame-info {
-  width: 1366px;
+  width: 100%;
   display: grid;
   height: auto;
   grid-template-columns: 1259px;
   grid-row-gap: 17px;
+  margin-top: 16px;
 }
-.product{
-  width: 1259px;
+.draft-element{
+  width: 100vw;
   height: auto;
   display: flex;
   flex-direction: row;
-  gap: 200px;
+  margin-top: 1%;
   padding-left: 53px;
+
 }
 .card-frame-line-1{
   width:100%;
@@ -111,20 +194,20 @@
   height: 0;
   border:1px solid rgba(0, 0, 0, 1);
 }
-.products{
+.draft-elements{
   display: grid;
   height: auto;
   grid-template-columns: 1259px;
   grid-row-gap: 17px;
 }
-.product-box {
+.draft-element-box {
   width: auto;
   height: auto;
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
-.product-info-box {
+.draft-element-info-box {
   width: 476px;
   height: 147px;
   background-size: cover;
@@ -133,11 +216,11 @@
   opacity: 1;
   overflow: hidden;
 }
-.product-image{
+.draft-element-image{
   width: 200px;
   height: 148px;
 }
-.product-title {
+.draft-element-title {
   width: 279px;
   height: 62px;
   color: rgba(0,0,0,1);
@@ -146,20 +229,22 @@
   font-size: 24px;
   text-align: left;
 }
-.product-price {
-  width: 60px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  margin-top: 69px;
-  left: 185px;
-  font-family: Play,sans-serif;
-  font-weight: normal;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
+.second-element-box{
+  display: flex;
+  gap: 50px;
+  align-items: center;
 }
-.product-description{
-  width: 100%;
+.third-element-box{
+  display: flex;
+  width: 250px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+}
+.draft-element-description{
+  width: 350px;
   height: 100%;
   color: rgba(0,0,0,1);
   font-family: Play,sans-serif;
@@ -219,17 +304,112 @@
   opacity: 1;
   text-align: center;
 }
-.delete-product-btn {
-  width: 138px;
-  color: rgba(0,0,0,1);
+.delete-draft-element-btn {
+  all:unset;
+  background-image: url("../../../media/pages_components/delete_btn.png");
+  background-size: 47px 47px;
+  background-position: center;
+  background-repeat: no-repeat;
   position: absolute;
-  top: 65px;
-  left: 0px;
-  text-decoration: underline;
-  font-family: Play,sans-serif;
-  font-weight: normal;
-  font-size: 20px;
-  opacity: 1;
+  right: 13%;
+  width: 47px;
+  height: 47px;
+  border-radius: 12px;
   text-align: center;
+  display: inline-block; /* Добавлено для корректного отображения кнопки */
+}
+.line{
+  width: 100%;
+  opacity: 0.42;
+  border: 1px solid #2EB76B;
+
+}
+.element-main{
+  width: 600px;
+  height: 134px;
+}
+.element-image{
+  width: 134px;
+  height: 134px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 5px;
+}
+.element-info{
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 39px;
+  text-align: center;
+  color: #000000;
+}
+.total-section{
+  width: 300px;
+}
+.element-price-title{
+  width: 150px;
+}
+.element-price{
+  width: 300px;
+}
+.order-del-btn{
+  font-family: Rubik,sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  all:unset;
+  width: 100px;
+  height: 56px;
+  padding-inline: 15px;
+  border:2px solid rgb(61, 61, 61);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order-form-btn{
+  font-family: Rubik,sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  all:unset;
+  width: 100px;
+  height: 56px;
+  padding-inline: 15px;
+  border:2px solid rgb(61, 61, 61);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order-del-btn:hover{
+  color: rgb(218, 37, 37);
+}
+.order-form-btn:hover{
+  color: rgb(18, 182, 114);
+}
+.services-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 }
 
+.services-list.expanded {
+    max-height: 500px; /* Достаточно для отображения всех услуг */
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.toggle-services {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 0 10px;
+}
+
+.car-block {
+    margin-bottom: 20px;
+    width: 100%;
+}

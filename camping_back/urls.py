@@ -23,10 +23,18 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.car_campings_page_render, name='car_campings_url'),
+    path('', views.main_page_render, name='main_page_url'),
+    path('car_campings/', views.car_campings_page_render, name='car_campings_url'),
+    path('tents/', views.tents_page_render, name='tents_url'),
     path('car_camping/<int:id>/', views.car_camping_page_render, name='car_camping_url'),
+    path('tents/<int:id>/', views.tent_page_render, name='tent_url'),
     path('order/<int:id>/', views.order_page_render, name='order_url'),
     path('order/<int:id>/delete/',views.del_order,name="delete_order"),
-    path('car_camping/<int:el_id>/add_to_order/', views.add_to_order, name='car_add_to_order')
+    path('order/<int:id>/form/',views.finalize_order,name="form_order"),
+    path('add-to-order/<str:product_type>/<int:product_id>/',views.add_to_order,name='add_to_order'),
+    path('add-service-to-order/<int:service_id>/<int:car_id>/', views.add_service_to_order, name='add_service_to_order'),
+    path('login/', views.login_page_render, name='login_url'),
+    path('logout/', views.logout_user, name='logout_url'),
+    path('sign_up/', views.sign_up_page_render, name='sign_up_page_url'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

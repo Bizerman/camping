@@ -16,6 +16,7 @@ a{
   height: auto;
   padding-top: 124px;
   overflow: visible;
+  z-index: 1
 }
 .head {
   position: fixed;
@@ -23,6 +24,7 @@ a{
   left: 0;
   width: 100%;
   height: 80px;
+  z-index: 1000;
   background-color: #000; /* Черный фон */
 }
 
@@ -120,13 +122,25 @@ a{
   width: 74px;
   height: 52px;
   opacity: 94%;
-  border: 1px solid white; /* Толщина + стиль + цвет */
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.draft-active{
+  width: 74px;
+  height: 52px;
+  opacity: 100%;
+  border: 1px solid #36f98e;
   border-radius: 10px;
 }
 .draft-img{
   width: 44px;
   height: 38px;
   opacity: 94%;
+}
+.draft-img-active{
+  width: 44px;
+  height: 38px;
+  opacity: 100%;
 }
 .draft-counter{
   margin-top: 25px;
@@ -135,4 +149,12 @@ a{
   font-weight: bolder;
   text-align: center;
   color: white;
+}
+.auth{
+  margin-left: 100px;
+  font-family: "Rubik",sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
 }

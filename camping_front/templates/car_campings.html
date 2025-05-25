@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% load custom_filters %}
-{% block title %}GM{% endblock %}
+{% block title %}Car Campings{% endblock %}
 {% block css %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/car_campings.css' %}">
+{% endblock %}
+{% block js %}
+    {% load static %}
+    <script src="{% static 'js/sort.js' %}" defer></script>
 {% endblock %}
 {% block content %}
     <div class="car_campings-page-content">
@@ -14,7 +18,7 @@
                 <p class="car_campings-description">Представьте: вы просыпаетесь под пение птиц у горного озера, завариваете кофе на собственной мини-кухне, а вечером, после дня, наполненного приключениями, устраиваете киносеанс под звездным небом, не покидая мягкого дивана своего мобильного дома. Это не просто транспорт — это ваш личный оазис на колесах, где есть всё необходимое: от уютной спальни с теплым одеялом до душа с горячей водой, от компактного холодильника до продуманных систем хранения вещей.</p>
                 <div class="orders-search">
                     <div class="search-sort d-flex flex-column">
-                        <div class="search">
+                        <div class="search z-0">
                             <form action="{% url 'car_campings_url' %}" method="get">
                                 {% if not data.search %}
                                     <input type="text" name="car_camping" placeholder= "НАЙТИ...">
@@ -23,10 +27,17 @@
                                 {% endif %}
                             </form>
                         </div>
-                        <a href="" class="sort d-flex flex-row justify-content-start align-items-center">
-                            <span class="sort-text">Сортировка по цене</span>
-                            <img src="../../media/car_campings_page/sort_degrease.png" class="sort-img">
-                        </a>
+                        <form action="{% url 'car_campings_url' %}" method="get" class="sort-form">
+                            <input type="hidden" name="sort" value="{{ request.GET.sort }}">
+                            <input type="hidden" name="car_camping" value="{{ request.GET.car_camping }}">
+
+                            <button type="submit" class="sort d-flex flex-row justify-content-start align-items-center border-0 bg-transparent">
+                                <span class="sort-text {% if request.GET.sort %}active-sort{% endif %}">Сортировка по цене</span>
+                                <img src="../../media/pages_components/sort_degrease.png"
+                                     class="sort-img {% if request.GET.sort == 'asc' %}reflected{% endif %}"
+                                     alt="Сортировка">
+                            </button>
+                        </form>
                     </div>
                     <div class="products">
                         {% for car in data.car_camping %}
@@ -39,28 +50,28 @@
                                         <span class="product-name">{{car.title}}</span>
                                     </a>
                                     <div class="product-properties d-grid">
-                                        <div class="product-property d-flex flex-row gap-3 justify-content-center align-items-center">
-                                            <img src="../../media/car_campings_page/cards/sleeping_seats.png" class="property-img">
+                                        <div class="product-property d-flex flex-row justify-content-between align-items-center">
+                                            <img src="../../media/car_campings_page/sleeping_seats.png" class="property-img">
                                             <span class="product-property-text">{{ car.seats }}</span>
                                         </div>
-                                        <div class="product-property d-flex flex-row gap-1 justify-content-center align-items-center">
-                                            <img src="../../media/car_campings_page/cards/engine1.png" class="property-img">
+                                        <div class="product-property d-flex flex-row justify-content-between align-items-center">
+                                            <img src="../../media/car_campings_page/engine1.png" class="property-img">
                                             <span class="product-property-text">
                                                 {% with car.engine|split:"/" as parts %}
                                                     {{ parts.0|default:"Двигатель" }}
                                                 {% endwith %}
                                             </span>
                                         </div>
-                                        <div class="product-property d-flex flex-column justify-content-center align-items-center">
+                                        <div class="product-property d-flex flex-column justify-content-between align-items-center">
                                             <span class="product-property-text-2">Коробка передач</span>
                                              <span class="product-property-text-3">{{ car.transmission|truncate_transmission }}</span>
                                         </div>
-                                        <div class="product-property d-flex flex-row gap-3 justify-content-center align-items-center">
-                                            <img src="../../media/car_campings_page/cards/seats.png" class="property-img">
+                                        <div class="product-property d-flex flex-row justify-content-between align-items-center">
+                                            <img src="../../media/car_campings_page/seats.png" class="property-img">
                                             <span class="product-property-text">{{ car.seats }}</span>
                                         </div>
-                                        <div class="product-property d-flex flex-row gap-3 justify-content-start align-items-center">
-                                            <img src="../../media/car_campings_page/cards/engine2.png" class="property-img">
+                                        <div class="product-property d-flex flex-row justify-content-between align-items-center">
+                                            <img src="../../media/car_campings_page/engine2.png" class="property-img">
                                             <span class="product-property-text">
                                                 {% with car.engine|split:"/" as parts %}
                                                     {{ parts.1|default:"Характеристики" }}

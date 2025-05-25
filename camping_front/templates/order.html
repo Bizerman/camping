@@ -1,35 +1,120 @@
 {% extends 'base.html' %}
-{% block title %}Your mission - GM{% endblock %}
+{% load custom_filters %}
+{% load static %}
+
+{% block title %}Заказ #{{ data.order.id }} - GM{% endblock %}
+
 {% block css %}
-    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/order.css' %}">
 {% endblock %}
+{% block js %}
+    {% load static %}
+    <script src="{% static 'js/additional_service_show.js' %}" defer></script>
+{% endblock %}
 {% block content %}
-    <div class="order-page-content">
-        <span class="order-title">Миссии</span>
+<div class="order-page-content">
+    <h1 class="order-title">Заказ #{{ data.order.id }}</h1>
+    <div class="order-content d-flex flex-column align-items-center ">
+        <!-- Автомобили -->
+        {% if cars %}
         <div class="order-info">
-            <div class="order-frame-title">
-                <span class="product-column-title">Объект</span>
-                <span class="product-column-description">Описание</span>
-                <div class="card-frame-line-1"></div>
+            <div class="d-flex flex-row justify-content-between ps-5 pe-5">
+                <span class="car-column-title">Автодома</span>
+                <span class="car-column-title element-price-title">Цена</span>
             </div>
+            <div class="line"></div>
             <div class="order-frame-info">
-                    {% for car_camping in order.get_cars %}
-                        <div class="product">
-                            <div class="product-box">
-                                <img src="{{ car_camping.img_url }}" class="product-image">
-                                <span class="product-title">{{ car_camping.title }}</span>
-                            </div>
-                            <span class="product-description">{{ car_camping.short_description }}</span>
-                        </div>
+                {% for car in cars %}
+        {% with services=services|filter_services:car.id %}
+        <div class="car-block"
+             data-base-price="{{ car.price|floatformat:0 }}"
+             data-total-with-services="{{ services|sum_prices|add:car.price|floatformat:0 }}">
+            <div class="order-frame-info">
+                <div class="order-element d-flex flex-row justify-content-between align-items-center ps-5">
+                    <div class="element-main d-flex gap-3 flex-row align-items-center justify-content-start">
+                        <img src="{{ car.images.first.image.url }}"
+                                 class="element-image"
+                                 alt="{{ car.title }}">
+                        <span class="element-info">{{ car.title }}</span>
+                    </div>
+                    <div class="element-price d-flex align-items-center justify-content-end gap-3">
+                        <span class="element-info dynamic-price">
+                            {{ car.price|add:services|sum_prices|format_price_2 }} ₽
+                        </span>
+                        <button class="toggle-services">▼</button>
+                    </div>
+                </div>
+                <!-- Сворачиваемые услуги -->
+                <div class="services-list">
+                    <div class="service-item ps-5 pe-4">
+                        <span>Базовая цена</span>
+                        <span class="pe-4">{{ car.price|format_price_2 }} ₽</span>
+                    </div>
+                    {% for service in services %}
+                    <div class="service-item ps-5 pe-4">
+                        <span>{{ service.service.name }}</span>
+                        <span class="pe-4">+ {{ service.service.price|format_price_2 }} ₽</span>
+                    </div>
                     {% endfor %}
+                </div>
             </div>
-            <div class="card-frame-line-2"></div>
         </div>
-        <div class="order-btns">
-            <a href="{% url 'delete_order' order.id%}" class="order-del-btn">
-                <span class="order-del-btn-text">Удалить миссию</span>
-            </a>
+        {% endwith %}
+        {% endfor %}
+            </div>
+            <div class="line"></div>
+        </div>
+        {% endif %}
+
+        <!-- Палатки -->
+        {% if tents %}
+        <div class="order-info">
+            <div class="d-flex flex-row justify-content-between ps-5 pe-5">
+                <span class="car-column-title">Палатки</span>
+            </div>
+            <div class="line"></div>
+            <div class="order-frame-info">
+                {% for tent in tents %}
+                <div class="order-element d-flex flex-row justify-content-between align-items-center ps-5 pe-5 mb-3">
+                    <div class="element-main d-flex gap-3 flex-row align-items-center justify-content-start">
+                        <img src="{{ tent.images.first.image.url }}"
+                             class="element-image"
+                             alt="{{ tent.name }}">
+                        <span class="element-info">{{ tent.name }}</span>
+                    </div>
+                    <div class="element-info element-price-title">
+                        {{ tent.price|format_price_2 }} ₽
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="line"></div>
+        </div>
+        {% endif %}
+
+        <div class="d-flex w-100 flex-column gap-5 justify-content-center align-items-end me-5">
+            <div class="total-section">
+                <span class="element-info">Общая сумма:</span>
+                <span class="element-info">{{ data.order.total_price|format_price_2 }} ₽</span>
+            </div>
+
+            {% if data.order.status == 1 %}
+            <div class="d-flex flex-row gap-4 text-center">
+                <form method="post" action="{% url 'delete_order' data.order.id %}">
+                    {% csrf_token %}
+                    <button class="order-del-btn" type="submit" class="action-btn delete-btn">
+                        Удалить заказ
+                    </button>
+                </form>
+                <form method="post" action="{% url 'form_order' data.order.id %}">
+                    {% csrf_token %}
+                    <button class="order-form-btn" type="submit" class="action-btn delete-btn">
+                        Оформить заказ
+                    </button>
+                </form>
+            </div>
+            {% endif %}
         </div>
     </div>
+</div>
 {% endblock %}

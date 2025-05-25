@@ -1,16 +1,127 @@
 {% extends 'base.html' %}
+{% load custom_filters %}
+{% load custom_filters %}
 {% block title %}{{ product.title }} - GM{% endblock %}
 {% block css %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/car_camping.css' %}">
 {% endblock %}
+{% block js %}
+    {% load static %}
+    <script src="{% static 'js/car_camping_gallery.js' %}" defer></script>
+    <script src="{% static 'js/category_swap.js' %}" defer></script>
+{% endblock %}
 {% block content %}
-    <div class="product-page-content">
-        <img src="{{ product.img_url }}" class="product-image">
-        <div class="product">
-            <span class="product-page-title">{{ product.title }} </span>
-            <div class="product-info-line"></div>
-            <span class="product-info">{{ product.full_description}}</span>
+    <a href="{% url 'car_campings_url' %}">
+        <div class="back-btn d-flex flex-row justify-content-center gap-4 align-items-center">
+            <img src="../../media/pages_components/arrow.png" class="back-arrow">
+            <span class="back-text">К каталогу</span>
         </div>
+    </a>
+    <div class="car-camping-info">
+        <div class="car-camping-imgs">
+            <div class="d-flex flex-row align-items-center justify-content-center gap-2">
+                <img src="../../media/pages_components/previous_img.png" class="btn-img" id="prevBtn">
+                {% with product.images.first as main_image %}
+                <img src="{{ main_image.image.url }}"
+                     alt="{{ product.title }}"
+                     class="main-img"
+                     id="mainImage">
+                {% endwith %}
+                <img src="../../media/pages_components/next_img.png"
+                     class="btn-img"
+                     id="nextBtn">
+            </div>
+            <div class="other-images" id="thumbnailContainer">
+                {% for image in product.images.all %}
+                    <img src="{{ image.image.url }}"
+                         alt="{{ product.title }}"
+                         class="other-img {% if forloop.first %}active{% endif %}"
+                         data-index="{{ forloop.counter0 }}">
+                {% endfor %}
+            </div>
+        </div>
+        <div class="car-camping-buy-card">
+            <div class="car-camping-buy-info">
+                <span class="car-camping-title">{{ product.title }}</span>
+                <div class="car-camping-properties">
+                    <div class=" d-flex flex-column gap-4">
+                        <div class="car-camping-property">
+                            <span class="car-camping-property-name">Описание</span>
+                            <span class="car-camping-property-value">{{ product.short_description }}</span>
+                        </div>
+                        <div class="car-camping-property">
+                            <span class="car-camping-property-name">Вместимость</span>
+                            <span class="car-camping-property-value">{{ product.seats }}</span>
+                        </div>
+                    </div>
+                    <span class="car-camping-price">{{ product.price|format_price_2 }} ₽</span>
+                </div>
+            </div>
+               {% if auth %}
+                   <a href="{% url 'add_to_order' 'car_camping' product.id %}" class="buy-btn-box d-flex justify-content-center align-items-center">
+                {% else %}
+                    <a href="{% url 'login_url' %}" class="buy-btn-box d-flex justify-content-center align-items-center">
+                {% endif %}
+                    <span class="buy-btn-text">Купить</span>
+                    </a>
+        </div>
+    </div>
+    <div class="car-camping-more-information">
+        <div class="car-camping-more-information-categories">
+                <div class="d-flex flex-row align-items-center gap-4">
+                    <span id="desc" class="car-camping-more-information-categories-titles active">Описание</span>
+                    <span id="spec" class="car-camping-more-information-categories-titles">Характеристики</span>
+                    <span id="services" class="car-camping-more-information-categories-titles">Дополнительные услуги</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column category-content">
+        <span class="category-title"></span>
+        <span class="category-info"></span>
+        <div id="product-data"
+             data-car-id="{{ product.id }}"
+             data-description="{{ product.description|escapejs }}"
+             data-length="{{ product.length }}"
+             data-width="{{ product.width }}"
+             data-height="{{ product.height }}"
+             data-engine="{{ product.engine|escapejs }}"
+             data-transmission="{{ product.transmission|escapejs }}"
+             data-seats="{{ product.seats }}"
+             data-category="{{ product.category|escapejs }}"
+             data-chassis="{{ product.chassis|escapejs }}"
+             data-fuel-tank="{{ product.fuel_tank }}"
+             data-abs="{{ product.abs|yesno:'true,false' }}"
+             data-ebd="{{ product.ebd|yesno:'true,false' }}"
+             data-asr="{{ product.asr|yesno:'true,false' }}"
+             data-steering="{{ product.steering|yesno:'true,false' }}"
+             data-cruise-control="{{ product.cruise_control|yesno:'true,false' }}"
+             data-multimedia="{{ product.multimedia|yesno:'true,false' }}"
+             data-conditioner="{{ product.conditioner|yesno:'true,false' }}"
+             data-computer="{{ product.computer|yesno:'true,false' }}"
+             data-seatbelts="{{ product.seatbelts }}"
+             data-alcov-sleeper-length="{{ product.alcov_sleeper_length }}"
+             data-alcov-sleeper-width="{{ product.alcov_sleeper_width }}"
+             data-additional-sleeper-length="{{ product.additional_sleeper_length }}"
+             data-additional-sleeper-width="{{ product.additional_sleeper_width }}"
+             data-fridge="{{ product.fridge }}"
+             data-dining-group="{{ product.dining_group }}"
+             data-water-system="{{ product.water_system }}"
+             data-kitchen-equipment="{{ product.kitchen_equipment|yesno:'true,false' }}"
+             data-awning="{{ product.awning }}"
+             data-bike-rack="{{ product.bike_rack }}"
+             data-windows="{{ product.windows|yesno:'true,false' }}"
+             data-internal-height="{{ product.internal_height }}"
+             data-services='[{% for service in services %}{
+                "id": {{ service.id }},
+                "name": "{{ service.name|escapejs }}",
+                "price": "{{ service.price|format_price_2|escapejs }}"
+            }{% if not forloop.last %},{% endif %}{% endfor %}]'
+            data-add-service-url="{% url 'add_service_to_order' 0 product.id %}"
+
+        ></div>
+        <div class="background-image"></div>
+        <div class="gradient-overlay"></div>
     </div>
 {% endblock %}

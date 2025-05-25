@@ -59,6 +59,7 @@
   font-family: Rubik,sans-serif;
   font-weight: normal;
   font-size: 13px;
+  margin-right: 7%;
   opacity: 65%;
   color: black;
 }
@@ -77,6 +78,7 @@
 .property-img{
   width: 28px;
   height: 28px;
+  margin-left: 2%;
 }
 .product-dimensions{
   font-family: Rubik,sans-serif;
@@ -112,7 +114,7 @@
   align-items: center;
 }
 .product-image{
-  width: auto;
+  width: 100%;
   height: 172px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -170,17 +172,21 @@
   gap: 68px
 }
 .sort-text{
+  width: 210px;
   font-family: "Rubik",sans-serif;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
   color: black;
 
 }
 .sort-img{
   width: 26px;
   height: 26px;
+  transition: transform 0.3s ease;
 }
-
+.sort-img.reflected {
+        transform: scaleY(-1); /* Вертикальное отражение */
+    }
 input[type="text"]{
   width: 300px;
   height: 55px;
@@ -193,20 +199,12 @@ input[type="text"]{
   text-align: left;
   background: rgba(255,255,255,1);
   border: 1px solid rgba(0,0,0,1);
-  background-image: url("../../../media/car_campings_page/search.png");
+  background-image: url("../../../media/pages_components/search.png");
   background-size: 40px 42px;
   background-position: 6px 6.5px;
   background-repeat: no-repeat;
 }
-.search-clean-btn {
-  width: 18px;
-  color: rgba(0,0,0,1);
-  font-family: Play,sans-serif;
-  font-weight: normal;
-  font-size: 48px;
-  opacity: 0.44999998807907104;
-  text-align: center;
-}
+
 .orders-passive {
   width: 55px;
   height: 55px;
@@ -248,3 +246,6 @@ input[type="text"]{
   font-size: 13px;
   text-align: left;
 }
+.active-sort {
+      color: #12b672;
+  }
